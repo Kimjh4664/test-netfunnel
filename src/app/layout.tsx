@@ -1,10 +1,5 @@
-// app/layout.tsx
-import { ClerkProvider } from '@clerk/nextjs';
 import { Inter, Poppins } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
-
-import MainFooter from '@/components/Footer';
-import MainNavbar from '@/components/Navbar';
 import { QueryProvider } from '@/providers/query';
 import { ThemeProvider } from '@/providers/theme';
 import '@/styles/globals.css';
@@ -53,40 +48,37 @@ export const metadata = {
 
 function RootLayoutContent({ children }: ChildrenProps) {
   return (
-    
-      <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased overflow-x-hidden`}
       >
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <QueryProvider>
-          <div className="flex min-h-screen bg-[var(--background)] w-full overflow-x-hidden">
-            <div className="flex-1 flex flex-col w-full">
-              <MainNavbar />
-              <main className="flex-1 w-full overflow-x-hidden">
-                {children}
-              </main>
-              <MainFooter />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <QueryProvider>
+            <div className="flex min-h-screen bg-[var(--background)] w-full overflow-x-hidden">
+              <div className="flex-1 flex flex-col w-full">
+                <main className="flex-1 w-full overflow-x-hidden">
+                  {children}
+                </main>
+              </div>
             </div>
-          </div>
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              className:
-                'bg-[var(--card)] text-[var(--foreground)] border-[var(--border)]',
-              duration: 3000,
-            }}
-          />
-        </QueryProvider>
-          </ThemeProvider>
-        </body>
-      </html>
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                className:
+                  'bg-[var(--card)] text-[var(--foreground)] border-[var(--border)]',
+                duration: 3000,
+              }}
+            />
+          </QueryProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
 
 export default function RootLayout({ children }: ChildrenProps) {
   return (
-    <ClerkProvider>
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased overflow-x-hidden`}
@@ -94,6 +86,5 @@ export default function RootLayout({ children }: ChildrenProps) {
         <RootLayoutContent>{children}</RootLayoutContent>
       </body>
     </html>
-    </ClerkProvider>
   );
 }
