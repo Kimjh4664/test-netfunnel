@@ -4,6 +4,7 @@ import { QueryProvider } from '@/providers/query';
 import { ThemeProvider } from '@/providers/theme';
 import '@/styles/globals.css';
 import type { ChildrenProps } from '@/types';
+import NetfunnelScripts from '@/components/net-funnel-scripts';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -80,6 +81,7 @@ function RootLayoutContent({ children }: ChildrenProps) {
 export default function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+      <NetfunnelScripts />
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased overflow-x-hidden`}
       >

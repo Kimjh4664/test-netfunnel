@@ -4,12 +4,45 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 export default function Home() {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const handleClick = () => {
+    if (typeof window !== 'undefined' && window.nfStart) {
+      window.nfStart(
+        {
+          projectKey: 'service_301',
+          segmentKey: 'segKey_5982',
+        },
+        function (res) {
+          console.log('[NetFUNNEL] 결과', res);
+
+          switch (res.status) {
+            case 'Success':
+              if (res.statusCode === 200) alert('대기 완료!');
+              break;
+            case 'Close':
+              alert('사용자가 닫음');
+              break;
+            case 'Block':
+              alert('차단됨');
+              break;
+            case 'Error':
+              alert('서버 오류');
+              break;
+            case 'NetworkError':
+              alert('네트워크 오류');
+              break;
+          }
+        }
+      );
+    } else {
+      alert('NetFUNNEL이 아직 로드되지 않았습니다.');
+    }
   };
 
   return (
@@ -28,12 +61,9 @@ export default function Home() {
               NET FUNNEL TEST
             </h1>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
-              <Link
-                href="/docs"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--primary)] px-6 text-sm font-semibold text-[var(--primary-foreground)] shadow-lg hover:bg-[var(--primary)]/[0.9] transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-              >
+              <button onClick={handleClick}>
                 START
-              </Link>
+              </button>
             </div>
           </motion.div>
         </div>
