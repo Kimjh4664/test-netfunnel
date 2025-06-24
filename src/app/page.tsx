@@ -54,7 +54,7 @@ export default function Home() {
         <Link href={'/test/range/1'}>구간 테스트</Link>
       </h3>
       <h3 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
-        <Link href={'/test/road'}>페이지 로드 테스트</Link>
+        <Link href={'/test/load'}>페이지 로드 테스트</Link>
       </h3>
       <h3 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
         <Link href={'/test/action'}>버튼 테스트</Link>
