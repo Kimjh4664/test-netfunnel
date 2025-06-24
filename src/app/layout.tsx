@@ -81,10 +81,10 @@ function RootLayoutContent({ children }: ChildrenProps) {
 export default function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
-      <NetfunnelScripts />
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased overflow-x-hidden`}
       >
+        <NetfunnelScripts />
         <RootLayoutContent>{children}</RootLayoutContent>
       </body>
     </html>

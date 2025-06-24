@@ -3,7 +3,7 @@
 
 'use client';
 
-import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Home() {
   const fadeIn = {
@@ -47,27 +47,18 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center w-full overflow-hidden">
-      {/* Hero Section */}
-      <motion.section
-        className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-[var(--background)] relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/[0.1] to-[var(--accent)]/[0.1] pointer-events-none" />
-        <div className="container px-4 sm:px-6 relative z-10 max-w-full">
-          <motion.div
-            className="flex flex-col items-center space-y-6 text-center"
-            {...fadeIn}
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter font-poppins bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-              NET FUNNEL TEST
-            </h1>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
-              <button onClick={handleClick}>
-                START
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-    </div>
+      <h2 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
+        NEXTLAB 유량제어 시스템 테스트
+      </h2>
+      <h3 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
+        <Link href={'/test/range/1'}>구간 테스트</Link>
+      </h3>
+      <h3 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
+        <Link href={'/test/road'}>페이지 로드 테스트</Link>
+      </h3>
+      <h3 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
+        <Link href={'/test/action'}>버튼 테스트</Link>
+      </h3>
+    </div >
   );
 }
