@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useEffect } from 'react';
+import { use } from 'react';
 import { NF_PROJECT_KEY, NF_SEGMENT_RANGE_KEY } from '@/config';
 import { useNetFunnel } from '@/hooks/use-net-funnel';
 import { useRouter } from 'next/navigation';
