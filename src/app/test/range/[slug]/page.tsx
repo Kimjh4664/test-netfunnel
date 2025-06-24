@@ -6,13 +6,14 @@ import { useNetFunnel } from '@/hooks/use-net-funnel';
 import { useRouter } from 'next/navigation';
 
 export default function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug: step } = use(params); // ✅ 안전한 방식
-
+  const { slug: step } = use(params);
+  
   const router = useRouter();
 
+  const stepDisplayName = step === '1' ? 'start' : step === '3' ? 'stop' : undefined;
   const { canProceed, result } = useNetFunnel({
     type: 'section',
-    step: step === '1' ? 'start' : step === '3' ? 'stop' : undefined,
+    step: stepDisplayName,
     projectKey: NF_PROJECT_KEY,
     segmentKey: NF_SEGMENT_RANGE_KEY
   });
@@ -22,7 +23,7 @@ export default function Page({ params }: { params: Promise<{ slug: string }> }) 
   return (
     <div className="p-6 space-y-4">
       <h1 className="text-xl font-bold">/test/range/{step}</h1>
-      <p className="text-sm text-gray-500">NetFunnel 상태: {result?.status ?? '대기 중...'}</p>
+      <p className="text-sm text-gray-500">NetFunnel 상태: {stepDisplayName ? result?.status ?? '대기 중...' : '호출하지 않음.'}</p>
       <button
         onClick={() => router.push(`/test/range/${nextStep}`)}
         disabled={!canProceed && step === '1'}

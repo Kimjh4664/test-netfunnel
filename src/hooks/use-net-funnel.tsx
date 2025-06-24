@@ -33,7 +33,6 @@ export function useNetFunnel({
     (action: 'start' | 'stop') => {
       if (typeof window === 'undefined') return;
 
-      const closed = sessionStorage.getItem('netfunnel_closed') === 'true';
       if (action === 'start' && closed) return;
 
       const methodMap = {
@@ -49,6 +48,8 @@ export function useNetFunnel({
 
       const fn = methodMap[type][action];
       if (!fn) return;
+
+      console.log(`${type} ${action} 호출`);
 
       fn({ projectKey, segmentKey }, (res: any) => {
         setResult(res);
