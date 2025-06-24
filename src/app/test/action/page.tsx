@@ -26,7 +26,7 @@ export default function ActionTestPage() {
         onClick={triggerStop}
         className="px-4 py-2 bg-green-600 text-white rounded"
       >
-        NetFUNNEL 대기 종료
+        NetFUNNEL 진입 종료
       </button>
 
       <p className="text-sm text-gray-500">NetFunnel 상태: {result?.status ?? '아직 대기 미실행'}</p>
