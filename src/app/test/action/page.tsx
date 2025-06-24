@@ -19,8 +19,10 @@ export default function ActionTestPage() {
         onClick={triggerStart}
         className="px-4 py-2 bg-green-600 text-white rounded"
       >
-        NetFUNNEL 대기 시작
+        NetFUNNEL 대기
       </button>
+
+      <p>진입에 대한 종료를 호출하기 위해서는 아래 버튼을 누르세요.</p>
 
       <button
         onClick={triggerStop}
