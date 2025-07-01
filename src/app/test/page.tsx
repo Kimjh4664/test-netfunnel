@@ -45,7 +45,9 @@ export default function Test() {
         <h3 className="text-2xl md:text-3xl font-semibold text-[var(--foreground)]">
           <Link href={'/test/action'}>버튼 테스트</Link>
         </h3>
-        <h3><a href="https://www.naver.com" target="_blank">테스트테스트</a></h3>
+        <h3><a href="https://www.naver.com" target="_blank">테스트테스트1</a></h3>
+        <button onClick={() => window.open('https://www.naver.com', '_blank')}>테스트테스트2</button>
+        <h3><a href="intent://www.naver.com/path#Intent;scheme=https;package=com.android.chrome;end;" target="_blank">테스트테스트3</a></h3>
       </div>}
     </div >
   );
